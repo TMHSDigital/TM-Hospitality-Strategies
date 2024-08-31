@@ -1,15 +1,6 @@
-window.addEventListener('load', () => {
-    // Fade in background and logo GIF
-    gsap.to('.logo-gif', { duration: 2, opacity: 0.7, ease: 'power2.inOut' });
-
-    // Animate stars
-    gsap.to('.star', { 
-        duration: 2, 
-        opacity: 0.8, 
-        stagger: { amount: 3, from: "random" },
-        repeat: -1,
-        yoyo: true
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    // Fade in background
+    gsap.to('.background', { duration: 2, opacity: 1, ease: 'power2.inOut' });
 
     // Animate logo
     gsap.from('.logo', { 
@@ -35,13 +26,25 @@ window.addEventListener('load', () => {
         delay: 2
     });
 
-    // Hover animation for CTA button
-    gsap.utils.toArray('.cta-button').forEach(button => {
+    // Global button hover animation
+    gsap.utils.toArray('a, button').forEach(button => {
         button.addEventListener('mouseenter', () => {
-            gsap.to(button, { duration: 0.3, scale: 1.05, backgroundColor: 'rgba(0, 255, 255, 0.3)', boxShadow: '0 0 20px #00ffff' });
+            gsap.to(button, { 
+                duration: 0.3, 
+                scale: 1.05, 
+                backgroundColor: 'rgba(0, 255, 255, 0.3)', 
+                boxShadow: '0 0 20px #00ffff',
+                color: '#ffffff'
+            });
         });
         button.addEventListener('mouseleave', () => {
-            gsap.to(button, { duration: 0.3, scale: 1, backgroundColor: 'rgba(0, 255, 255, 0.1)', boxShadow: 'none' });
+            gsap.to(button, { 
+                duration: 0.3, 
+                scale: 1, 
+                backgroundColor: 'rgba(0, 255, 255, 0.1)', 
+                boxShadow: 'none',
+                color: '#00ffff'
+            });
         });
     });
 });
