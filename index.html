@@ -9,19 +9,40 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #000;
             color: #fff;
             height: 100%;
             overflow: hidden;
         }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .background iframe {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,4,40,0.7), rgba(0,78,146,0.7));
+            z-index: 0;
+        }
         .container {
+            position: relative;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg, #000428, #004e92);
-            position: relative;
+            z-index: 1;
         }
         h1 {
             font-size: 3em;
@@ -40,7 +61,7 @@
             padding: 15px 30px;
             font-size: 1.2em;
             text-transform: uppercase;
-            background-color: transparent;
+            background-color: rgba(0, 255, 255, 0.1);
             color: #00ffff;
             border: 2px solid #00ffff;
             border-radius: 50px;
@@ -49,8 +70,7 @@
             text-decoration: none;
         }
         .cta-button:hover {
-            background-color: #00ffff;
-            color: #000;
+            background-color: rgba(0, 255, 255, 0.3);
             box-shadow: 0 0 20px #00ffff;
         }
         .stars {
@@ -71,6 +91,10 @@
     </style>
 </head>
 <body>
+    <div class="background">
+        <iframe src="https://giphy.com/embed/L6Mgrfcc6Y9PS2Nm6B" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    </div>
+    <div class="overlay"></div>
     <div class="container">
         <div class="stars" id="stars"></div>
         <h1>TM Hospitality Strategies</h1>
