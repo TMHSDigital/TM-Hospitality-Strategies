@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
-    // Fade in background
-    gsap.to('.background', { duration: 2, opacity: 1, ease: 'power2.inOut' });
+    // Fade in background and logo GIF
+    gsap.to('.logo-gif', { duration: 2, opacity: 0.7, ease: 'power2.inOut' });
 
     // Animate stars
     gsap.to('.star', { 
