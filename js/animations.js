@@ -18,32 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
       .from('.cta-button', { duration: 1, y: 50, opacity: 0, ease: 'power3.out' }, '-=0.5');
 
     // Animate social links
-    gsap.from('.social-links', { 
+    gsap.from('.social-links a', { 
         duration: 1, 
-        x: 50, 
+        y: 50, 
         opacity: 0, 
+        stagger: 0.2,
         ease: 'power3.out',
         delay: 2
     });
 
     // Global button hover animation
-    gsap.utils.toArray('a, button').forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            gsap.to(button, { 
+    gsap.utils.toArray('.cta-button, .social-links a').forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            gsap.to(element, { 
                 duration: 0.3, 
-                scale: 1.05, 
-                backgroundColor: 'rgba(0, 255, 255, 0.3)', 
-                boxShadow: '0 0 20px #00ffff',
-                color: '#ffffff'
+                scale: 1.1, 
+                color: '#ffffff',
+                textShadow: '0 0 10px #00ffff'
             });
         });
-        button.addEventListener('mouseleave', () => {
-            gsap.to(button, { 
+        element.addEventListener('mouseleave', () => {
+            gsap.to(element, { 
                 duration: 0.3, 
                 scale: 1, 
-                backgroundColor: 'rgba(0, 255, 255, 0.1)', 
-                boxShadow: 'none',
-                color: '#00ffff'
+                color: element.classList.contains('cta-button') ? '#00ffff' : '#ffffff',
+                textShadow: 'none'
             });
         });
     });
