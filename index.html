@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TM Hospitality Strategies - Futuristic Adventures</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+        
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             color: #fff;
             height: 100%;
             overflow: hidden;
@@ -43,19 +45,31 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
+            padding: 0 20px;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            letter-spacing: 2px;
         }
         h1 {
-            font-size: 3em;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5em;
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px #00ffff;
+            text-align: center;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         }
         p {
             font-size: 1.2em;
             max-width: 600px;
             text-align: center;
             margin-bottom: 30px;
+            line-height: 1.6;
         }
         .cta-button {
             padding: 15px 30px;
@@ -68,10 +82,29 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
         .cta-button:hover {
             background-color: rgba(0, 255, 255, 0.3);
             box-shadow: 0 0 20px #00ffff;
+            transform: scale(1.05);
+        }
+        .social-links {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        .social-links a {
+            color: #fff;
+            font-size: 1.5em;
+            margin-left: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
         }
         .stars {
             position: absolute;
@@ -89,6 +122,7 @@
             border-radius: 50%;
         }
     </style>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="background">
@@ -96,10 +130,16 @@
     </div>
     <div class="overlay"></div>
     <div class="container">
+        <div class="logo">TMHS</div>
         <div class="stars" id="stars"></div>
         <h1>TM Hospitality Strategies</h1>
         <p>Embark on a futuristic journey through innovative hospitality solutions. Experience tomorrow's comfort, today.</p>
         <a href="#" class="cta-button">Begin Your Adventure</a>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
     </div>
 
     <script>
