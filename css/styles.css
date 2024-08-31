@@ -1,3 +1,4 @@
+/* Base styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -8,6 +9,7 @@ body, html {
     background-color: #000;
 }
 
+/* Background styles */
 .background {
     position: fixed;
     top: 0;
@@ -34,18 +36,20 @@ body, html {
     z-index: 0;
 }
 
+/* Container styles */
 .container {
     position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     z-index: 1;
-    padding: 0 20px;
+    padding: 100px 20px 0;
     text-align: center;
 }
 
+/* Logo styles */
 .logo {
     position: absolute;
     top: 20px;
@@ -56,6 +60,7 @@ body, html {
     font-weight: bold;
 }
 
+/* Heading styles */
 h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 3.5em;
@@ -66,6 +71,7 @@ h1 {
     text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
 }
 
+/* Paragraph styles */
 p {
     font-size: 1.2em;
     max-width: 600px;
@@ -74,6 +80,7 @@ p {
     line-height: 1.6;
 }
 
+/* CTA Button styles */
 .cta-button {
     padding: 15px 30px;
     font-size: 1.2em;
@@ -92,25 +99,96 @@ p {
 .cta-button:hover {
     background-color: rgba(0, 255, 255, 0.3);
     box-shadow: 0 0 20px #00ffff;
+    transform: scale(1.05);
+}
+
+/* Social section styles */
+.social-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.social-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.social-section p {
+    margin-bottom: 20px;
 }
 
 .social-links {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
+    justify-content: center;
     gap: 20px;
 }
 
 .social-links a {
     color: #fff;
-    font-size: 1.5em;
+    font-size: 2em;
     text-decoration: none;
     transition: all 0.3s ease;
+    background-color: rgba(0, 255, 255, 0.1);
+    border: 2px solid #00ffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-links a:hover {
     color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    background-color: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px #00ffff;
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Apply animations */
+.logo { animation: slideInFromTop 1s ease-out; }
+h1 { animation: slideInFromBottom 1s ease-out 0.5s both; }
+p { animation: fadeIn 1s ease-out 1s both; }
+.cta-button { animation: scaleIn 0.5s ease-out 1.5s both; }
+.social-section { animation: fadeIn 1s ease-out 2s both; }
+.social-links a { animation: scaleIn 0.5s ease-out 2.5s both; }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5em; }
+    .social-links { flex-wrap: wrap; }
+    .social-links a {
+        font-size: 1.5em;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container { padding-top: 80px; }
+    h1 { font-size: 2em; }
+    p { font-size: 1em; }
+    .cta-button { font-size: 1em; padding: 12px 24px; }
 }
