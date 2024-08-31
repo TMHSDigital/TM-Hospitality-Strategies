@@ -14,6 +14,7 @@
             color: #fff;
             height: 100%;
             overflow: hidden;
+            background-color: #000;
         }
         .background {
             position: fixed;
@@ -22,6 +23,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            opacity: 0;
         }
         .background iframe {
             width: 100%;
@@ -54,6 +56,7 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 1.2em;
             letter-spacing: 2px;
+            opacity: 0;
         }
         h1 {
             font-family: 'Orbitron', sans-serif;
@@ -63,6 +66,7 @@
             margin-bottom: 20px;
             text-align: center;
             text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+            opacity: 0;
         }
         p {
             font-size: 1.2em;
@@ -70,6 +74,7 @@
             text-align: center;
             margin-bottom: 30px;
             line-height: 1.6;
+            opacity: 0;
         }
         .cta-button {
             padding: 15px 30px;
@@ -84,6 +89,7 @@
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
+            opacity: 0;
         }
         .cta-button:hover {
             background-color: rgba(0, 255, 255, 0.3);
@@ -94,6 +100,7 @@
             position: absolute;
             bottom: 20px;
             right: 20px;
+            opacity: 0;
         }
         .social-links a {
             color: #fff;
@@ -120,9 +127,11 @@
             width: 2px;
             height: 2px;
             border-radius: 50%;
+            opacity: 0;
         }
     </style>
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 </head>
 <body>
     <div class="background">
@@ -150,12 +159,60 @@
                 star.className = 'star';
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
-                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
                 stars.appendChild(star);
             }
         }
 
         createStars();
+
+        // GSAP Animations
+        window.addEventListener('load', () => {
+            // Fade in background
+            gsap.to('.background', { duration: 2, opacity: 1, ease: 'power2.inOut' });
+
+            // Animate stars
+            gsap.to('.star', { 
+                duration: 2, 
+                opacity: 0.8, 
+                stagger: { amount: 3, from: "random" },
+                repeat: -1,
+                yoyo: true
+            });
+
+            // Animate logo
+            gsap.from('.logo', { 
+                duration: 1, 
+                y: -50, 
+                opacity: 0, 
+                ease: 'power3.out',
+                delay: 0.5
+            });
+
+            // Animate main content
+            const tl = gsap.timeline({ delay: 1 });
+            tl.from('h1', { duration: 1, y: 50, opacity: 0, ease: 'power3.out' })
+              .from('p', { duration: 1, y: 50, opacity: 0, ease: 'power3.out' }, '-=0.5')
+              .from('.cta-button', { duration: 1, y: 50, opacity: 0, ease: 'power3.out' }, '-=0.5');
+
+            // Animate social links
+            gsap.from('.social-links', { 
+                duration: 1, 
+                x: 50, 
+                opacity: 0, 
+                ease: 'power3.out',
+                delay: 2
+            });
+
+            // Hover animation for CTA button
+            gsap.utils.toArray('.cta-button').forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    gsap.to(button, { duration: 0.3, scale: 1.05, backgroundColor: 'rgba(0, 255, 255, 0.3)', boxShadow: '0 0 20px #00ffff' });
+                });
+                button.addEventListener('mouseleave', () => {
+                    gsap.to(button, { duration: 0.3, scale: 1, backgroundColor: 'rgba(0, 255, 255, 0.1)', boxShadow: 'none' });
+                });
+            });
+        });
     </script>
 </body>
 </html>
